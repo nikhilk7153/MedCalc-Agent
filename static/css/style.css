@@ -1,0 +1,459 @@
+:root {
+    --primary-color: #0a84ff;
+    --secondary-color: #005ecc;
+    --accent-color: #63a4ff;
+    --dark-bg: #1c1c1c;
+    --medium-bg: #2a2a2a;
+    --light-bg: #333333;
+    --text-color: #f0f0f0;
+    --muted-text: #b0b0b0;
+    --border-color: rgba(255,255,255,0.15);
+    --sidebar-width: 260px;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--medium-bg);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--light-bg);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* Firefox scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--light-bg) var(--medium-bg);
+}
+
+/* Base styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow: hidden;
+}
+
+.dark-theme {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+}
+
+/* Layout */
+.container-fluid, .row {
+    height: 100%;
+}
+
+/* Sidebar styles */
+.sidebar-col {
+    padding: 0;
+    background-color: #121212;
+    border-right: 1px solid var(--border-color);
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.sidebar {
+    padding: 1.5rem 1rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.logo {
+    max-width: 80px;
+    margin: 1rem auto;
+    display: block;
+}
+
+.sidebar-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    flex-grow: 1;
+}
+
+.sidebar-section h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.sidebar-section h6 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-color);
+}
+
+/* Form controls in sidebar */
+.form-select, .form-control {
+    background-color: var(--light-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+}
+
+.form-select:focus, .form-control:focus {
+    background-color: var(--light-bg);
+    border-color: var(--primary-color);
+    color: var(--text-color);
+    box-shadow: 0 0 0 0.25rem rgba(10, 132, 255, 0.25);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--muted-text);
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Saved conversations list */
+.saved-conversations {
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: var(--medium-bg);
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+.saved-conversation-item {
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    background-color: var(--light-bg);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.saved-conversation-item:hover {
+    background-color: rgba(10, 132, 255, 0.1);
+}
+
+.saved-conversation-item .title {
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.saved-conversation-item .meta {
+    font-size: 0.75rem;
+    color: var(--muted-text);
+}
+
+/* Chat area */
+.chat-col {
+    padding: 0;
+    position: relative;
+    height: 100%;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+}
+
+.messages-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1rem;
+    padding-bottom: 150px; /* Increased space for larger input */
+}
+
+/* Message styling */
+.message {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    max-width: 85%;
+}
+
+.message.user-message {
+    background-color: var(--light-bg);
+    margin-left: auto;
+}
+
+.message.assistant-message {
+    background-color: var(--medium-bg);
+    margin-right: auto;
+}
+
+.message-content {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.message-content p {
+    margin-bottom: 0.75rem;
+}
+
+.message-content p:last-child {
+    margin-bottom: 0;
+}
+
+.message-content pre {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 0.5rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 0.75rem 0;
+}
+
+.message-content code {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.message-time {
+    font-size: 0.7rem;
+    color: var(--muted-text);
+    margin-top: 0.25rem;
+    text-align: right;
+}
+
+/* Calculator info styling */
+.calculator-info {
+    background-color: rgba(10, 132, 255, 0.1);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 12px 0;
+    font-size: 0.9rem;
+    color: var(--muted-text);
+}
+
+/* Input area */
+.input-area {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background-color: var(--dark-bg);
+    border-top: 1px solid var(--border-color);
+    z-index: 100;
+    margin-left: calc(25% - 10px); /* Adjust based on sidebar width */
+}
+
+@media (min-width: 992px) {
+    .input-area {
+        margin-left: calc(16.666% - 5px); /* Adjust for lg breakpoint */
+    }
+}
+
+.input-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#userInput {
+    padding-right: 110px; /* Space for button */
+    resize: none;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.send-button {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.375rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.send-button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Special message styling */
+.welcome-message {
+    text-align: center;
+    margin: 4rem auto;
+    max-width: 500px;
+    background-color: var(--medium-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.welcome-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+/* Loading indicator */
+.typing-indicator {
+    display: flex;
+    gap: 4px;
+    padding: 0.5rem;
+    background-color: var(--medium-bg);
+    border-radius: 8px;
+    width: fit-content;
+    margin-bottom: 1rem;
+    margin-right: auto;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: inline-block;
+    animation: bounce 1.5s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    0%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Calculation-specific styling */
+.math-formula {
+    font-family: monospace;
+    padding: 0.2rem 0.4rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.calculation-steps {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin: 0.75rem 0;
+    border-left: 3px solid var(--primary-color);
+}
+
+.clinical-interpretation {
+    background-color: rgba(10, 132, 255, 0.1);
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin: 0.75rem 0;
+    border-left: 3px solid #4caf50;
+}
+
+/* Partnership display */
+.partnership-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 10px 0;
+    padding: 6px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.partnership-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.partnership-divider {
+    color: var(--muted-text);
+    font-size: 1rem;
+}
+
+.mdcalc-logo {
+    height: 24px;
+    width: auto;
+    display: block;
+}
+
+.browser-use-logo {
+    height: 24px;
+    width: auto;
+    display: block;
+}
+
+.app-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+} 

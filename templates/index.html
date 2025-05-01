@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedCalc-Agent</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="/static/img/favicon.ico">
+</head>
+<body class="dark-theme">
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 sidebar-col">
+                <div class="sidebar">
+                    <div class="sidebar-header">
+                        <h3 class="app-title">MedCalc-Agent</h3>
+                        <div class="partnership-container">
+                            <span class="partnership-item">
+                                <img src="/static/img/browser-use-dark.png" alt="Browser Use" class="browser-use-logo">
+                            </span>
+                            <span class="partnership-divider">×</span>
+                            <span class="partnership-item">
+                                <img src="/static/img/MDCalc.png" alt="MDCalc.com" class="mdcalc-logo">
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Calculator Selection -->
+                    <div class="sidebar-section">
+                        <h5>Calculator Selection</h5>
+                        <div class="form-group mb-2">
+                            <label for="calculatorSelect">Select a medical calculator:</label>
+                            <select class="form-select" id="calculatorSelect">
+                                <option value="" selected disabled>Choose a calculator...</option>
+                                <!-- Will be populated from API -->
+                            </select>
+                        </div>
+                        <div id="calculatorUrlContainer" class="mb-2 d-none">
+                            <label>Link:</label>
+                            <a href="#" id="calculatorUrl" target="_blank" class="d-block text-primary"></a>
+                        </div>
+                        <button id="useCalculatorBtn" class="btn btn-primary w-100 mb-3 d-none">Use this calculator</button>
+                    </div>
+                    
+                    <!-- Model Settings -->
+                    <div class="sidebar-section">
+                        <h5>Model Settings</h5>
+                        <div class="form-group mb-3">
+                            <label for="modelSelect">Model:</label>
+                            <select class="form-select" id="modelSelect">
+                                <option value="gpt-4o" selected>gpt-4o</option>
+                                <option value="gpt-35-turbo">gpt-35-turbo</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Conversation Management -->
+                    <div class="sidebar-section">
+                        <h5>Conversation Management</h5>
+                        <button id="newConversationBtn" class="btn btn-primary w-100 mb-2">New Conversation</button>
+                        <button id="saveConversationBtn" class="btn btn-outline-primary w-100 mb-3">Save Conversation</button>
+                        
+                        <h6>Saved Conversations</h6>
+                        <div id="savedConversationsList" class="saved-conversations">
+                            <!-- Will be populated from API -->
+                            <div class="text-muted small">No saved conversations found.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Chat Area -->
+            <div class="col-md-9 col-lg-10 chat-col">
+                <div class="chat-container">
+                    <!-- Chat messages will appear here -->
+                    <div id="messagesContainer" class="messages-container">
+                        <!-- Messages will be inserted here by JavaScript -->
+                    </div>
+                    
+                    <!-- Input area -->
+                    <div class="input-area">
+                        <div class="input-container">
+                            <textarea id="userInput" class="form-control" placeholder="Ask a medical question or provide patient data..." rows="4"></textarea>
+                            <button id="sendButton" class="send-button">
+                                <span>Send</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html> 
