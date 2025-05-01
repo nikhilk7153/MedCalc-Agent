@@ -103,7 +103,4 @@ An HTML dashboard and PNG charts will appear in `/visualizations`.
 * The UI reconnects its WebSocket automatically if the backend restarts, so you can develop without losing state.
 * Calculator mappings live in `calculator_map.json`; no fragile string concatenation.
 
-## License & Credits
-This project builds on the fantastic **browser-use** library for agent-browser interaction and uses assets from **MDCalc.com** under fair-use for demonstration purposes.  See `LICENSE` for full terms.
-
 ---
